@@ -1,24 +1,25 @@
 #include <stdio.h>
 
 int main() {
-    int n, i, flag = 0;
+    int n, reversed = 0, remainder, original;
 
-    printf("Enter a positive integer: ");
+    printf("Enter an integer: ");
     scanf("%d", &n);
 
-    // 0 and 1 are not prime numbers
-    if (n == 0 || n == 1) {
-        printf("%d is not a prime number.", n);
-    } else {
-        for (i = 2; i <= n/2; ++i) {
-            // condition for non-prime number
-            if (n % i == 0) {
-                flag = 1;
-                break;
-            }
-        }
+    original = n;
 
-        if (flag == 0) {
-            printf("%d is a prime number.", n);
-        } else {
-            printf("%d is not a prime
+    // reverse the number
+    while (n != 0) {
+        remainder = n % 10;
+        reversed = reversed * 10 + remainder;
+        n /= 10;
+    }
+
+    if (original == reversed) {
+        printf("%d is a palindrome.", original);
+    } else {
+        printf("%d is not a palindrome.", original);
+    }
+
+    return 0;
+}
